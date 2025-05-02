@@ -41,7 +41,12 @@ The task was to determine if a patient with any given indicators such as BMI, ca
 
 <img width="880" alt="Screenshot 2025-05-02 at 9 20 47 AM" src="https://github.com/user-attachments/assets/c9ddb144-88fe-4132-a611-7837fcaeac44" />
 
-The distribution in these histograms is slightly skewed in these examples. These histograms also show a clear imbalance as there are more non-diabetic instances than diabetic, which is something to keep in mind when running our models. 
+Here are three of the more promising features that have a relatively good distribution between the classes. The distribution in these histograms is slightly skewed in these examples. These histograms also show a clear imbalance as there are more non-diabetic instances than diabetic, which is something to keep in mind when running our models. 
+
+<img width="894" alt="Screenshot 2025-05-02 at 11 33 59 AM" src="https://github.com/user-attachments/assets/867099f4-219c-4f10-9e9b-01531ee1a560" />
+
+Here, we see a feature that doesn't have enough meaningful data for our model to learn from, especially in the diabetic class. 
+
 
 ### Problem Formulation
 To classify diabetes risk, certain indicators have to be high enough or present (such as a history) to consider the risk. This can be challenging with mulitple factors playing upon each other. I had to use models that would consider all features and underlying patterns, which is why I wanted to use ensemble methods to detect these patterns. 
