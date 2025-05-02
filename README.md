@@ -17,7 +17,7 @@ This repository is forked from [https://github.com/UTA-DataScience/DATA3402.Spri
 
 # Diabetes Risk Classification Using Health Indicators
 
-* **One Sentence Summary** This repository has an attempt to apply machine learning methodology to the CDC's Diabetes Health Indicators to indicate diabetes risk classification (dataset provided by UCI Machine Learning Repository: [https://archive.ics.uci.edu/dataset/891/cdc+diabetes+health+indicators]). 
+This repository has an attempt to apply machine learning methodology to the CDC's Diabetes Health Indicators to indicate diabetes risk classification (dataset provided by UCI Machine Learning Repository: [https://archive.ics.uci.edu/dataset/891/cdc+diabetes+health+indicators]). 
 
 ## Overview
 
