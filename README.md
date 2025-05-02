@@ -5,14 +5,14 @@
 
 This repository is forked from [https://github.com/UTA-DataScience/DATA3402.Spring.2025] and contains my labs assigned by our professor. Below is a quick overview of what each lab covers. Below, you'll find a report on our end-of-semester Tabular Project. 
 
-Lab 1: Downloading and using Unix
-Lab 2: Create a Tic Tac Toe Game
-Lab 3: Monte Carlo Simulation
-Lab 4: Object Oriented Programming (Shapes)
-Lab 5: Create a Simple Linear Algebra System (Matrix Representation)
-Lab 6: Create a Black Jack Game
-Lab 7: Data Analysis on the SUSY Dataset
-Lab 8: Data Analysis on the SUSY Dataset Part 2
+* Lab 1: Downloading and using Unix
+* Lab 2: Create a Tic Tac Toe Game
+* Lab 3: Monte Carlo Simulation
+* Lab 4: Object Oriented Programming (Shapes)
+* Lab 5: Create a Simple Linear Algebra System (Matrix Representation)
+* Lab 6: Create a Black Jack Game
+* Lab 7: Data Analysis on the SUSY Dataset
+* Lab 8: Data Analysis on the SUSY Dataset Part 2
 
 
 # Diabetes Risk Classification Using Health Indicators
