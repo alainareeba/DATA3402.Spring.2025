@@ -1,36 +1,47 @@
 
-![](UTA-DataScience-Logo.png)
+![UTA-DataScience-Logo](https://github.com/user-attachments/assets/5721ef99-b9ce-4729-84d5-ad9f4afbda5f)
 
-# Project Title
+# DATA 3402 - Python for Data Science 2 - Spring 2025 - UTA
 
-* **One Sentence Summary** Ex: This repository holds an attempt to apply LSTMs to Stock Market using data from
-"Get Rich" Kaggle challenge (provide link). 
+This repository is forked from [https://github.com/UTA-DataScience/DATA3402.Spring.2025] and contains my labs assigned by our professor. Below is a quick overview of what each lab covers. Below, you'll find a report on our end-of-semester Tabular Project. 
+
+Lab 1: Downloading and using Unix
+Lab 2: Create a Tic Tac Toe Game
+Lab 3: Monte Carlo Simulation
+Lab 4: Object Oriented Programming (Shapes)
+Lab 5: Create a Simple Linear Algebra System (Matrix Representation)
+Lab 6: Create a Black Jack Game
+Lab 7: Data Analysis on the SUSY Dataset
+Lab 8: Data Analysis on the SUSY Dataset Part 2
+
+
+# Diabetes Risk Classification Using Health Indicators
+
+* **One Sentence Summary** This repository has an attempt to apply machine learning methodology to the CDC's Diabetes Health Indicators to indicate diabetes risk classification (dataset provided by UCI Machine Learning Repository: [https://archive.ics.uci.edu/dataset/891/cdc+diabetes+health+indicators]). 
 
 ## Overview
 
-* This section could contain a short paragraph which include the following:
-  * **Definition of the tasks / challenge**  Ex: The task, as defined by the Kaggle challenge is to use a time series of 12 features, sampled daily for 1 month, to predict the next day's price of a stock.
-  * **Your approach** Ex: The approach in this repository formulates the problem as regression task, using deep recurrent neural networks as the model with the full time series of features as input. We compared the performance of 3 different network architectures.
-  * **Summary of the performance achieved** Ex: Our best model was able to predict the next day stock price within 23%, 90% of the time. At the time of writing, the best performance on Kaggle of this metric is 18%.
+The task was to determine if a patient with any given indicators such as BMI, cardiac history, high cholesterol, etc., is at risk for diabetes or not. The approach to this problem and using this dataset was to set it up as classification task. I used Random Forest as the main model with all of the features as input. I compared the performance of 2 Random Forest models: one with a class imbalance issue and one with the class imbalance solved. Our best model had accuracy score of 79% and weighted recall of 79%. According to Kaggle, the
 
 ## Summary of Workdone
-
-Include only the sections that are relevant an appropriate.
 
 ### Data
 
 * Data:
-  * Type: For example
-    * Input: medical images (1000x1000 pixel jpegs), CSV file: image filename -> diagnosis
-    * Input: CSV file of features, output: signal/background flag in 1st column.
-  * Size: How much data?
-  * Instances (Train, Test, Validation Split): how many data points? Ex: 1000 patients for training, 200 for testing, none for validation
+    * Input: The type of input is a directly forked tabular dataset from the UCI Machine Learning Repository, replicating a CSV file of features, output: tabular dataset with all feature names and description, roles, data type, demographic, and any missing values. There were 22 columns and 253,680 rows. I used the raw dataset with all instances. I used 177,576 patients for training, 38, 052 for testing, and 38,052 for validation. 
 
 #### Preprocessing / Clean up
 
-* Describe any manipulations you performed to the data.
+* For the preprocessing, I handled the outliers of the numerical columns by removing any data points that had a Z-score less than 3. After removing the outliers, I standardized the numerical columns using a standard scaler so that our columns would have a mean close to 0 and standard deviation to 1 for any models that might need a standardized dataset. After that, I ensured that all of the numerical entries were integers instead of floats in order to prevent errors in our models.  
 
 #### Data Visualization
+<img width="905" alt="Screenshot 2025-05-02 at 9 16 40 AM" src="https://github.com/user-attachments/assets/1a522b9c-7e55-44a0-80f2-2413ff0c55ba" />
+
+<img width="883" alt="Screenshot 2025-05-02 at 9 17 41 AM" src="https://github.com/user-attachments/assets/40fbcc88-1a0d-429e-89b3-6575e0312239" />
+
+<img width="912" alt="Screenshot 2025-05-02 at 9 18 05 AM" src="https://github.com/user-attachments/assets/fadecbea-6f25-4650-ae43-fd4522d45208" />
+
+
 
 Show a few visualization of the data and say a few words about what you see.
 
