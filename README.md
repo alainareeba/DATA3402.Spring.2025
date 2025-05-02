@@ -21,7 +21,7 @@ Lab 8: Data Analysis on the SUSY Dataset Part 2
 
 ## Overview
 
-The task was to determine if a patient with any given indicators such as BMI, cardiac history, high cholesterol, etc., is at risk for diabetes or not. The approach to this problem and using this dataset was to set it up as classification task. I used Random Forest as the main model with all of the features as input. I compared the performance of 2 Random Forest models: one with a class imbalance issue and one with the class imbalance solved. Our best model had accuracy score of 79% and weighted recall of 79%. According to Kaggle, the
+The task was to determine if a patient with any given indicators such as BMI, cardiac history, high cholesterol, etc., is at risk for diabetes or not. The approach to this problem and using this dataset was to set it up as classification task. I used Random Forest as the main model with all of the features as input. I compared the performance of 3 models: Random Forest, XGBoost, and KNN. I also compared the baseline model a class imbalance issue and the other three models with the class imbalance solved. Our best model had accuracy score of 79% and weighted recall of 79%. 
 
 ## Summary of Workdone
 
@@ -37,93 +37,86 @@ The task was to determine if a patient with any given indicators such as BMI, ca
 #### Data Visualization
 <img width="905" alt="Screenshot 2025-05-02 at 9 16 40 AM" src="https://github.com/user-attachments/assets/1a522b9c-7e55-44a0-80f2-2413ff0c55ba" />
 
-<img width="883" alt="Screenshot 2025-05-02 at 9 17 41 AM" src="https://github.com/user-attachments/assets/40fbcc88-1a0d-429e-89b3-6575e0312239" />
-
 <img width="912" alt="Screenshot 2025-05-02 at 9 18 05 AM" src="https://github.com/user-attachments/assets/fadecbea-6f25-4650-ae43-fd4522d45208" />
 
+<img width="880" alt="Screenshot 2025-05-02 at 9 20 47 AM" src="https://github.com/user-attachments/assets/c9ddb144-88fe-4132-a611-7837fcaeac44" />
 
-
-Show a few visualization of the data and say a few words about what you see.
+The distribution in these histograms is slightly skewed in these examples. These histograms also show a clear imbalance as there are more non-diabetic instances than diabetic, which is something to keep in mind when running our models. 
 
 ### Problem Formulation
+To classify diabetes risk, certain indicators have to be high enough or present (such as a history) to consider the risk. This can be challenging with mulitple factors playing upon each other. I had to use models that would consider all features and underlying patterns, which is why I wanted to use ensemble methods to detect these patterns. 
 
-* Define:
-  * Input / Output
-  * Models
-    * Describe the different models you tried and why.
-  * Loss, Optimizer, other Hyperparameters.
+### Training 
 
-### Training
+For model training, several algorithms were used, including Random Forest, XGBoost, and K-Nearest Neighbors (KNN). Our attempt for XGBoost raised convergence warnings suggesting more iterations. This was related to inconsistent input types handling rather than the algorithm itself, which was handled early on, but still raised an error. Specifically, KNN required more attention as it classifies samples based on the majority class of the k closest samples in the feature space. This method is sensitive to feature scaling, so the data was standardized using StandardScaler.To keep training efficient, a testing set of the data could be used to quickly iterate on model performance. In this case, the full dataset was used but stratified training/test splitting to make sure the target class was not missed. SMOTE was applied to balance the testing set due to class imbalance in the Diabetes_binary target aftering seeing the support on our baseline model. Models were then trained on the resampled (balanced) training data.
 
-* Describe the training:
-  * How you trained: software and hardware.
-  * How did training take.
-  * Training curves (loss vs epoch for test/train).
-  * How did you decide to stop training.
-  * Any difficulties? How did you resolve them?
 
 ### Performance Comparison
 
-* Clearly define the key performance metric(s).
-* Show/compare results in one table.
-* Show one (or few) visualization(s) of results, for example ROC curves.
+<img width="537" alt="Screenshot 2025-05-02 at 9 45 57 AM" src="https://github.com/user-attachments/assets/a54ce6be-1ff8-4f8d-a371-06a30b259e6e" />
+Baseline Model Evalution Metrics 
+
+<img width="793" alt="Screenshot 2025-05-02 at 9 46 40 AM" src="https://github.com/user-attachments/assets/0a6e71de-a374-4132-8d95-30cc489c2909" />
+Baseline Model ROC Curve 
+
+<img width="1003" alt="Screenshot 2025-05-02 at 9 47 43 AM" src="https://github.com/user-attachments/assets/8bf9d8a6-ee69-4f4f-8635-6c7190219bd4" />
+Decision Function Histogram 
+
+<img width="512" alt="Screenshot 2025-05-02 at 9 54 11 AM" src="https://github.com/user-attachments/assets/56cd3baa-a82d-4887-9679-43ac555faf61" />
+SMOTE Random Forest Evaluation Metrics 
+
+<img width="851" alt="Screenshot 2025-05-02 at 9 54 59 AM" src="https://github.com/user-attachments/assets/d94d3338-4e43-40d4-ae11-5b008802a406" />
+SMOTE Random Forest ROC Curve (slightly different)
+
+<img width="461" alt="Screenshot 2025-05-02 at 9 52 44 AM" src="https://github.com/user-attachments/assets/0aa2005c-7dc3-42f7-973f-78ec263cbc6f" />
+Model Comparison Table (Only focused on recall as false negatives are a priority)
+
+Our key metric for our model was recall and accuracy. Recall prioritizes identify true positives, minimizing false negatives (as those are the most detrimental in the medical field). Accuracy shows the total proportion of correct predictions. Our ROC Curves 
 
 ### Conclusions
 
-* State any conclusions you can infer from your work. Example: LSTM work better than GRU.
+ Random Forest with SMOTE has the highest scores relatively for both classes, considering the class imbalance solution. But our baseline had the highest without addressing the class imbalance, meaning that it was really only classifying non-diabetic patients really well. SMOTE is a good way to oversample, but there is nuance to this technique as it might not always apply to the dataset properly. Other models surprisingly performed poorly considering the class imbalance solution and their nature in classification problem contexts. 
 
 ### Future Work
 
-* What would be the next thing that you would try.
-* What are some other studies that can be done starting from here.
+The next thing I would try is a different synthetic sampling technique to help the support. I would also try to reduce the features based on feature significance to see if that's why the other models. I would also try to add a new class: pre-diabetes and define the boundaries between non-diabetic, pre-diabetic, and diabetic to make the model more efficient in healthcare settings.  Some other studies that could be applied to this dataset is what is the threshold between non-diabetes and diabetes, considering A1Cs or having a study of diabetes risk specifically for the less common indicators such as income and education. 
 
 ## How to reproduce results
 
-* In this section, provide instructions at least one of the following:
-   * Reproduce your results fully, including training.
-   * Apply this package to other data. For example, how to use the model you trained.
-   * Use this package to perform their own study.
-* Also describe what resources to use for this package, if appropirate. For example, point them to Collab and TPUs.
+### Overview of variables used
 
-### Overview of files in repository
-
-* Describe the directory structure, if any.
-* List all relavent files and describe their role in the package.
-* An example:
-  * utils.py: various functions that are used in cleaning and visualizing data.
-  * preprocess.ipynb: Takes input data in CSV and writes out data frame after cleanup.
-  * visualization.ipynb: Creates various visualizations of the data.
-  * models.py: Contains functions that build the various models.
-  * training-model-1.ipynb: Trains the first model and saves model during training.
-  * training-model-2.ipynb: Trains the second model and saves model during training.
-  * training-model-3.ipynb: Trains the third model and saves model during training.
-  * performance.ipynb: loads multiple trained models and compares results.
-  * inference.ipynb: loads a trained model and applies it to test data to create kaggle submission.
-
-* Note that all of these notebooks should contain enough text for someone to understand what is happening.
-
+* df - our raw dataset
+* df_no_outliers - dataset with outliers removed from numerical columns
+* df_scaled - dataset with scaled numerical columns 
+  
 ### Software Setup
-* List all of the required packages.
-* If not standard, provide or point to instruction for installing the packages.
-* Describe how to install your package.
+The UCI Machine Learning Repository must be installed in your notebook in order to fetch the dataset directly from their repository. 
+1. pip install ucimlrepo
+2. from ucimlrepo import fetch_ucirepo
+ cdc_diabetes_health_indicators = fetch_ucirepo(id=891)
 
-### Data
+X = cdc_diabetes_health_indicators.data.features
+y = cdc_diabetes_health_indicators.data.targets
 
-* Point to where they can download the data.
-* Lead them through preprocessing steps, if necessary.
+print(cdc_diabetes_health_indicators.metadata)
+
+print(cdc_diabetes_health_indicators.variables)
+
+These directions are also directly on the website when clicking Import in Python: https://archive.ics.uci.edu/dataset/891/cdc+diabetes+health+indicators
 
 ### Training
 
-* Describe how to train the model
+To perform training, make sure no instances are continuous and that the variables are consistent with their data type listed at the beginning. If there are continuous variables that are supposed to be integers or floats that are supposed to be integers, convert all numerical columns to integers. Remove the ID column as well so it doesn't interfere.  Set X equal to your feature list (ENSURE YOU ARE USING THE PREPROCESSED VARIABLES) and y equal to your risk (yes or no) list and then split the training and the testing set using the 70-30 method (70% is used for training and 30% is used for testing). Use X_temp as a temporary version of the dataset as to not change anything with the regular dataset. If using SMOTE, make sure to apply SMOTE to your X and Y training and test sets in order to have it apply properly to the class distribution
 
 #### Performance Evaluation
 
-* Describe how to run the performance evaluation.
+To evaluate performance, you can use a simple confusion matrix or a decision function histogram to see how well your model is identifying the amount true positive cases vs false negatives and how well it is making decisions. 
 
 
 ## Citations
 
-* Provide any references.
+* Centers for Disease Control and Prevention. (2022, April 29). CDC - 2014 BRFSS survey data and Documentation. Centers for Disease Control and Prevention. https://www.cdc.gov/brfss/annual_data/annual_2014.html
+* Centers for Disease Control and Prevention. (2024, May 15). Diabetes Risk Factors. Diabetes. https://www.cdc.gov/diabetes/risk-factors/index.html
 
 
 
