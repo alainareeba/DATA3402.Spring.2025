@@ -54,21 +54,33 @@ For model training, several algorithms were used, including Random Forest, XGBoo
 ### Performance Comparison
 
 <img width="537" alt="Screenshot 2025-05-02 at 9 45 57 AM" src="https://github.com/user-attachments/assets/a54ce6be-1ff8-4f8d-a371-06a30b259e6e" />
+
+
 Baseline Model Evalution Metrics 
 
 <img width="793" alt="Screenshot 2025-05-02 at 9 46 40 AM" src="https://github.com/user-attachments/assets/0a6e71de-a374-4132-8d95-30cc489c2909" />
+
+
 Baseline Model ROC Curve 
 
 <img width="1003" alt="Screenshot 2025-05-02 at 9 47 43 AM" src="https://github.com/user-attachments/assets/8bf9d8a6-ee69-4f4f-8635-6c7190219bd4" />
+
+
 Decision Function Histogram 
 
 <img width="512" alt="Screenshot 2025-05-02 at 9 54 11 AM" src="https://github.com/user-attachments/assets/56cd3baa-a82d-4887-9679-43ac555faf61" />
+
+
 SMOTE Random Forest Evaluation Metrics 
 
 <img width="851" alt="Screenshot 2025-05-02 at 9 54 59 AM" src="https://github.com/user-attachments/assets/d94d3338-4e43-40d4-ae11-5b008802a406" />
+
+
 SMOTE Random Forest ROC Curve (slightly different)
 
 <img width="461" alt="Screenshot 2025-05-02 at 9 52 44 AM" src="https://github.com/user-attachments/assets/0aa2005c-7dc3-42f7-973f-78ec263cbc6f" />
+
+
 Model Comparison Table (Only focused on recall as false negatives are a priority)
 
 Our key metric for our model was recall and accuracy. Recall prioritizes identify true positives, minimizing false negatives (as those are the most detrimental in the medical field). Accuracy shows the total proportion of correct predictions. Our ROC Curves 
